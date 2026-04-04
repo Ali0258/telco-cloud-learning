@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alali Khalaf — 5G & Cloud Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050a0f;
+    --surface: #0b1420;
+    --surface2: #0f1e2e;
+    --accent: #00d4ff;
+    --accent2: #00ff88;
+    --accent3: #7b4fff;
+    --text: #e8f4f8;
+    --text-muted: #6b8a9a;
+    --border: rgba(0, 212, 255, 0.12);
+    --glow: rgba(0, 212, 255, 0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* Grid overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(5, 10, 15, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 8rem 4rem 4rem;
+    overflow: hidden;
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: 50%; left: 30%;
+    transform: translate(-50%, -50%);
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(0,212,255,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-glow2 {
+    position: absolute;
+    top: 20%; right: 10%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(123,79,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+  }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 40px; height: 1px;
+    background: var(--accent);
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  .hero h1 .line2 {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(0,212,255,0.5);
+  }
+
+  .hero h1 .accent { color: var(--accent); }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-badges {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    background: rgba(0,212,255,0.04);
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+
+  .btn-primary {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.9rem 2rem;
+    background: var(--accent);
+    color: var(--bg);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: white;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .btn-primary:hover::after { opacity: 0.15; }
+
+  .btn-secondary {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.9rem 2rem;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .hero-stats {
+    position: absolute;
+    right: 4rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    animation: fadeUp 0.8s 0.5s ease both;
+  }
+
+  .stat {
+    text-align: right;
+    border-right: 2px solid var(--accent);
+    padding-right: 1.5rem;
+  }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 2.2rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-top: 0.25rem;
+  }
+
+  /* SECTIONS */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 4rem;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 30px; height: 1px;
+    background: var(--accent);
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    margin-bottom: 3rem;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+  }
+
+  .about-text p strong { color: var(--text); font-weight: 500; }
+
+  .info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .info-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .info-icon {
+    font-size: 1rem;
+    min-width: 24px;
+  }
+
+  .info-content .info-key {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  .info-content .info-val {
+    font-size: 0.9rem;
+    color: var(--text);
+    margin-top: 0.1rem;
+  }
+
+  /* SKILLS */
+  .skills-section { background: var(--surface); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-card {
+    border: 1px solid var(--border);
+    padding: 1.75rem;
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+
+  .skill-card:hover::before { transform: scaleX(1); }
+  .skill-card:hover { border-color: rgba(0,212,255,0.3); transform: translateY(-3px); }
+
+  .skill-card-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .skill-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    color: var(--text);
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    padding: 0.25rem 0.6rem;
+    background: rgba(0,212,255,0.06);
+    border: 1px solid rgba(0,212,255,0.15);
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+
+  .skill-tag.green {
+    background: rgba(0,255,136,0.06);
+    border-color: rgba(0,255,136,0.15);
+    color: var(--accent2);
+  }
+
+  .skill-tag.purple {
+    background: rgba(123,79,255,0.06);
+    border-color: rgba(123,79,255,0.2);
+    color: var(--accent3);
+  }
+
+  /* EXPERIENCE */
+  .timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+  }
+
+  .timeline-item {
+    padding-left: 3rem;
+    padding-bottom: 3rem;
+    position: relative;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -6px; top: 6px;
+    width: 13px; height: 13px;
+    border: 2px solid var(--accent);
+    background: var(--bg);
+    transform: rotate(45deg);
+  }
+
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .timeline-role {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+
+  .timeline-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    background: rgba(0,212,255,0.08);
+    padding: 0.3rem 0.75rem;
+    border: 1px solid rgba(0,212,255,0.2);
+  }
+
+  .timeline-company {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .timeline-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .timeline-bullets li {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .timeline-bullets li::before {
+    content: '→';
+    color: var(--accent);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    margin-top: 0.2rem;
+    flex-shrink: 0;
+  }
+
+  /* PROJECTS */
+  .projects-section { background: var(--surface); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    border: 1px solid var(--border);
+    background: var(--bg);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+
+  .project-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 80px; height: 80px;
+    border-top: 1px solid rgba(0,212,255,0.1);
+    border-left: 1px solid rgba(0,212,255,0.1);
+    pointer-events: none;
+  }
+
+  .project-card:hover {
+    border-color: rgba(0,212,255,0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+
+  .project-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: rgba(0,212,255,0.08);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .project-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.25rem;
+  }
+
+  /* CERTIFICATIONS */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+
+  .cert-card {
+    border: 1px solid var(--border);
+    padding: 1.25rem 1.5rem;
+    background: var(--surface);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s;
+  }
+
+  .cert-card:hover {
+    border-color: rgba(0,255,136,0.3);
+    background: rgba(0,255,136,0.03);
+  }
+
+  .cert-dot {
+    width: 8px; height: 8px;
+    background: var(--accent2);
+    flex-shrink: 0;
+  }
+
+  .cert-text {
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+
+  .cert-status {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--accent2);
+    text-transform: uppercase;
+    margin-top: 0.2rem;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    border-top: 1px solid var(--border);
+  }
+
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .contact-left h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-left h2 span { color: var(--accent); }
+
+  .contact-left p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.3s;
+  }
+
+  .contact-link:hover {
+    border-color: var(--accent);
+    background: rgba(0,212,255,0.05);
+    transform: translateX(8px);
+  }
+
+  .contact-link-icon { font-size: 1.1rem; min-width: 24px; }
+
+  .contact-link-content .link-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  .contact-link-content .link-val { font-size: 0.9rem; margin-top: 0.1rem; }
+
+  .contact-availability {
+    padding: 2rem;
+    border: 1px solid rgba(0,255,136,0.2);
+    background: rgba(0,255,136,0.03);
+  }
+
+  .avail-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .avail-dot {
+    width: 10px; height: 10px;
+    background: var(--accent2);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(0,255,136,0.4); }
+    50% { box-shadow: 0 0 0 8px rgba(0,255,136,0); }
+  }
+
+  .avail-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--accent2);
+    text-transform: uppercase;
+  }
+
+  .avail-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .avail-desc { color: var(--text-muted); font-size: 0.9rem; }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 4rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer .foot-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--accent);
+  }
+
+  footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* SKILL BAR */
+  .skill-bar-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .skill-bar-item { }
+
+  .skill-bar-header {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  .skill-bar-track {
+    height: 2px;
+    background: rgba(255,255,255,0.06);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skill-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    section { padding: 4rem 1.5rem; }
+    .hero { padding: 7rem 1.5rem 4rem; }
+    .hero-stats { position: static; transform: none; flex-direction: row; margin-top: 3rem; }
+    .stat { text-align: left; border-right: none; border-bottom: 2px solid var(--accent); padding-right: 0; padding-bottom: 0.75rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">AK<span style="color:var(--text-muted)">.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-content">
+    <div class="hero-tag">5G · Cloud-Native · AI/ML Telecom</div>
+    <h1>
+      Alali<br>
+      <span class="line2">Khalaf</span>
+    </h1>
+    <p class="hero-sub">
+      Senior Telecom Engineer architecting the future of 5G RAN & cloud-native infrastructure. 
+      Kubernetes · O-RAN · VoLTE/IMS · AI-driven automation.
+    </p>
+    <div class="hero-badges">
+      <span class="badge">Ericsson</span>
+      <span class="badge">Huawei</span>
+      <span class="badge">3GPP</span>
+      <span class="badge">O-RAN</span>
+      <span class="badge">Kubernetes</span>
+      <span class="badge">Python</span>
+      <span class="badge">Netherlands</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Get in Touch</a>
+      <a href="#experience" class="btn-secondary">View Experience</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">7+</div>
+      <div class="stat-label">Years<br>Experience</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">>98%</div>
+      <div class="stat-label">CSSR<br>Delivered</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2G–5G</div>
+      <div class="stat-label">Network<br>Expertise</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="background: var(--surface);">
+  <div class="section-label">01 — About</div>
+  <h2 class="section-title">Engineering Networks.<br>Enabling the Future.</h2>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>
+        I'm a <strong>Senior Telecom Engineer</strong> with 7+ years optimizing LTE/5G networks across 
+        multi-vendor environments (Ericsson, Huawei), now based in <strong>Almere, Netherlands</strong>.
+      </p>
+      <p>
+        My expertise spans deep <strong>RAN optimization</strong> and cutting-edge cloud-native 5G—combining 
+        hands-on field experience with modern DevOps practices: Docker, Kubernetes, CI/CD pipelines, and 
+        AI/ML-driven network automation.
+      </p>
+      <p>
+        I focus on improving network performance, reducing mobility issues, and enabling data-driven 
+        decision-making across modern mobile networks. I actively publish technical content on 
+        5G Core, Open RAN, VoLTE/IMS, and AI-driven automation.
+      </p>
+      <div class="skill-bar-wrap">
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>RAN Optimization</span><span>95%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>Cloud-Native / Kubernetes</span><span>78%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="78"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>Python / AI-ML</span><span>75%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>IP Networking</span><span>82%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal" style="transition-delay: 0.1s;">
+      <div class="info-list">
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <div class="info-content">
+            <div class="info-key">Location</div>
+            <div class="info-val">Almere, Flevoland, Netherlands</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📧</div>
+          <div class="info-content">
+            <div class="info-key">Email</div>
+            <div class="info-val">khalaf.thaier.777@gmail.com</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📞</div>
+          <div class="info-content">
+            <div class="info-key">Phone</div>
+            <div class="info-val">+36 1 429 0010</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🔗</div>
+          <div class="info-content">
+            <div class="info-key">LinkedIn</div>
+            <div class="info-val">linkedin.com/in/alali-khalaf</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🎓</div>
+          <div class="info-content">
+            <div class="info-key">Education</div>
+            <div class="info-val">B.Eng. Electrical & Communications — Cordoba Private University (2013–2017)</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🌐</div>
+          <div class="info-content">
+            <div class="info-key">Languages</div>
+            <div class="info-val">English (C1) · Arabic (Native) · Dutch (A2)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="skills-section">
+  <div class="section-label">02 — Skills</div>
+  <h2 class="section-title">Technical Expertise</h2>
+  <div class="skills-grid">
+
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">📡</div>
+      <h3>RAN Optimization</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">LTE</span>
+        <span class="skill-tag">5G NR</span>
+        <span class="skill-tag">2G/3G</span>
+        <span class="skill-tag">CSSR >98%</span>
+        <span class="skill-tag">CDR <1%</span>
+        <span class="skill-tag">KPI Analysis</span>
+      </div>
+    </div>
+
+    <div class="skill-card reveal" style="transition-delay:0.05s">
+      <div class="skill-card-icon">☁️</div>
+      <h3>Cloud-Native Telecom</h3>
+      <div class="skill-tags">
+        <span class="skill-tag green">Kubernetes</span>
+        <span class="skill-tag green">Docker</span>
+        <span class="skill-tag green">CI/CD</span>
+        <span class="skill-tag green">Linux</span>
+        <span class="skill-tag green">Git</span>
+        <span class="skill-tag green">O-RAN</span>
+      </div>
+    </div>
+
+    <div class="skill-card reveal" style="transition-delay:0.1s">
+      <div class="skill-card-icon">🤖</div>
+      <h3>AI/ML for Networks</h3>
+      <div class="skill-tags">
+        <span class="skill-tag purple">Python</span>
+        <span class="skill-tag purple">Anomaly Detection</span>
+        <span class="skill-tag purple">SON/ML</span>
+        <span class="skill-tag purple">Data Processing</span>
+        <span class="skill-tag purple">Automation</span>
+      </div>
+    </div>
+
+    <div class="skill-card reveal" style="transition-delay:0.15s">
+      <div class="skill-card-icon">📶</div>
+      <h3>Mobility Management</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Handover Opt.</span>
+        <span class="skill-tag">Ping-Pong Reduction</span>
+        <span class="skill-tag">Parameter Tuning</span>
+        <span class="skill-tag">VoLTE/IMS</span>
+      </div>
+    </div>
+
+    <div class="skill-card reveal" style="transition-delay:0.2s">
+      <div class="skill-card-icon">🌐</div>
+      <h3>IP Networking</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">OSPF</span>
+        <span class="skill-tag">BGP</span>
+        <span class="skill-tag">MPLS</span>
+        <span class="skill-tag">Troubleshooting</span>
+        <span class="skill-tag">5G Core</span>
+      </div>
+    </div>
+
+    <div class="skill-card reveal" style="transition-delay:0.25s">
+      <div class="skill-card-icon">🔧</div>
+      <h3>Multi-Vendor Integration</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Ericsson</span>
+        <span class="skill-tag">Huawei</span>
+        <span class="skill-tag">HW Swap</span>
+        <span class="skill-tag">Feature Rollout</span>
+        <span class="skill-tag">Zero Downtime</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">03 — Experience</div>
+  <h2 class="section-title">Career Timeline</h2>
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-header">
+        <div class="timeline-role">Radio Frequency Engineer</div>
+        <div class="timeline-period">Nov 2016 – Oct 2023</div>
+      </div>
+      <div class="timeline-company">Syriatel Mobile Telecom · Damascus, Syria</div>
+      <ul class="timeline-bullets">
+        <li>Optimized and planned 2G, 3G, and LTE networks with a strong foundation in 5G fundamentals across a large-scale commercial network.</li>
+        <li>Conducted detailed RF analysis to identify and resolve network performance issues, achieving CSSR above 98% and CDR below 1%.</li>
+        <li>Reduced ping-pong handovers by 15% through targeted parameter tuning and mobility optimization strategies.</li>
+        <li>Led multi-vendor hardware swap programs and feature rollouts with Ericsson and Huawei equipment, achieving zero-downtime deployments.</li>
+        <li>Collaborated with cross-functional teams to implement effective network solutions and improve coverage, capacity, and efficiency.</li>
+        <li>Utilized industry-standard tools for network planning, drive testing, and post-processing optimization.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal" style="transition-delay:0.1s">
+      <div class="timeline-dot" style="border-color: var(--accent2);"></div>
+      <div class="timeline-header">
+        <div class="timeline-role">Independent Learning & Upskilling</div>
+        <div class="timeline-period">2023 – Present</div>
+      </div>
+      <div class="timeline-company">Self-Directed · Netherlands</div>
+      <ul class="timeline-bullets">
+        <li>Pursuing certifications in Kubernetes, Telco Cloud Engineering, and AI/ML for 5G networks.</li>
+        <li>Publishing technical content on 5G Core, Open RAN, VoLTE/IMS, and AI-driven network automation.</li>
+        <li>Building hands-on lab environments with Docker, Kubernetes, and CI/CD pipelines for telecom workloads.</li>
+        <li>Studying Dutch (A2 level) to better integrate into the Netherlands tech ecosystem.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="projects-section">
+  <div class="section-label">04 — Projects</div>
+  <h2 class="section-title">Key Initiatives</h2>
+  <div class="projects-grid">
+
+    <div class="project-card reveal">
+      <div class="project-num">01</div>
+      <h3>Handover Optimization Engine</h3>
+      <p>Designed and deployed targeted parameter tuning strategies that reduced ping-pong handovers by 15% across a live LTE network, improving user experience significantly.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">LTE</span><span class="skill-tag">Mobility</span><span class="skill-tag">KPI</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal" style="transition-delay:0.05s">
+      <div class="project-num">02</div>
+      <h3>Zero-Downtime Multi-Vendor HW Swap</h3>
+      <p>Led hardware migration programs between Ericsson and Huawei platforms, coordinating interoperability testing and seamless live network transitions with zero service interruption.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Ericsson</span><span class="skill-tag">Huawei</span><span class="skill-tag">Integration</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal" style="transition-delay:0.1s">
+      <div class="project-num">03</div>
+      <h3>AI-Assisted Anomaly Detection (PoC)</h3>
+      <p>Built a Python-based anomaly detection prototype using telecom KPI data to identify degradation patterns early, demonstrating SON-related ML use cases for automated healing.</p>
+      <div class="skill-tags">
+        <span class="skill-tag purple">Python</span><span class="skill-tag purple">ML</span><span class="skill-tag purple">SON</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal" style="transition-delay:0.15s">
+      <div class="project-num">04</div>
+      <h3>Cloud-Native 5G Lab Environment</h3>
+      <p>Deployed a containerized 5G lab using Docker and Kubernetes to simulate cloud-native telecom workloads, enabling hands-on O-RAN and Telco Cloud experimentation.</p>
+      <div class="skill-tags">
+        <span class="skill-tag green">Kubernetes</span><span class="skill-tag green">Docker</span><span class="skill-tag green">O-RAN</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal" style="transition-delay:0.2s">
+      <div class="project-num">05</div>
+      <h3>VoLTE/IMS Performance Analysis</h3>
+      <p>Conducted in-depth analysis of VoLTE call drop patterns and IMS signaling failures, implementing corrective RF and core parameter changes that improved voice quality metrics.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">VoLTE</span><span class="skill-tag">IMS</span><span class="skill-tag">Signaling</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal" style="transition-delay:0.25s">
+      <div class="project-num">06</div>
+      <h3>5G Technical Blog & Knowledge Sharing</h3>
+      <p>Actively publishing articles on 5G Core architecture, Open RAN, and AI-driven network automation—building a community resource for telecom professionals transitioning to cloud-native.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">5G Core</span><span class="skill-tag">O-RAN</span><span class="skill-tag">Leadership</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section>
+  <div class="section-label">05 — Certifications</div>
+  <h2 class="section-title">Credentials & Learning</h2>
+  <div class="cert-grid">
+    <div class="cert-card reveal">
+      <div class="cert-dot"></div>
+      <div>
+        <div class="cert-text">Certified Kubernetes Administrator (CKA)</div>
+        <div class="cert-status">In Progress</div>
+      </div>
+    </div>
+    <div class="cert-card reveal" style="transition-delay:0.05s">
+      <div class="cert-dot"></div>
+      <div>
+        <div class="cert-text">Telco Cloud Engineering Certification</div>
+        <div class="cert-status">In Progress</div>
+      </div>
+    </div>
+    <div class="cert-card reveal" style="transition-delay:0.1s">
+      <div class="cert-dot"></div>
+      <div>
+        <div class="cert-text">AI/ML for 5G Networks</div>
+        <div class="cert-status">In Progress</div>
+      </div>
+    </div>
+    <div class="cert-card reveal" style="transition-delay:0.15s">
+      <div class="cert-dot" style="background: var(--accent);"></div>
+      <div>
+        <div class="cert-text">B.Eng. Electrical & Communications Engineering</div>
+        <div class="cert-status" style="color: var(--accent);">Completed — Cordoba University</div>
+      </div>
+    </div>
+    <div class="cert-card reveal" style="transition-delay:0.2s">
+      <div class="cert-dot" style="background: var(--accent);"></div>
+      <div>
+        <div class="cert-text">LTE/5G RAN Optimization — 7 Years Practical</div>
+        <div class="cert-status" style="color: var(--accent);">Verified Experience</div>
+      </div>
+    </div>
+    <div class="cert-card reveal" style="transition-delay:0.25s">
+      <div class="cert-dot" style="background: var(--accent);"></div>
+      <div>
+        <div class="cert-text">Multi-Vendor Integration — Ericsson & Huawei</div>
+        <div class="cert-status" style="color: var(--accent);">Verified Experience</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-label">06 — Contact</div>
+  <div class="contact-inner">
+    <div class="contact-left reveal">
+      <h2>Let's Build the <span>5G Future</span> Together.</h2>
+      <p>Open to cloud-native 5G, O-RAN, and AI-driven network automation roles across the Netherlands and Europe.</p>
+      <div class="contact-links">
+        <a href="mailto:khalaf.thaier.777@gmail.com" class="contact-link">
+          <div class="contact-link-icon">✉</div>
+          <div class="contact-link-content">
+            <div class="link-label">Email</div>
+            <div class="link-val">khalaf.thaier.777@gmail.com</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/alali-khalaf" target="_blank" class="contact-link">
+          <div class="contact-link-icon">💼</div>
+          <div class="contact-link-content">
+            <div class="link-label">LinkedIn</div>
+            <div class="link-val">linkedin.com/in/alali-khalaf</div>
+          </div>
+        </a>
+        <a href="tel:+3614290010" class="contact-link">
+          <div class="contact-link-icon">📞</div>
+          <div class="contact-link-content">
+            <div class="link-label">Phone</div>
+            <div class="link-val">+36 1 429 0010</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="reveal" style="transition-delay:0.1s">
+      <div class="contact-availability">
+        <div class="avail-indicator">
+          <div class="avail-dot"></div>
+          <div class="avail-label">Open to Opportunities</div>
+        </div>
+        <div class="avail-title">Available for New Roles</div>
+        <div class="avail-desc">
+          Looking for positions in cloud-native 5G engineering, O-RAN integration, Kubernetes/Telco cloud, 
+          and AI/ML network automation. Based in the Netherlands, open to hybrid and on-site roles across Europe.
+        </div>
+        <div style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">
+          <span class="skill-tag green">5G RAN</span>
+          <span class="skill-tag green">Cloud-Native</span>
+          <span class="skill-tag green">O-RAN</span>
+          <span class="skill-tag green">Netherlands</span>
+          <span class="skill-tag green">EU Remote</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-name">Alali Khalaf</div>
+  <p>5G RAN & Cloud-Native Engineer · Almere, Netherlands · 2025</p>
+</footer>
+
+<script>
+  // Intersection Observer for reveal animations
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Trigger skill bars
+        const bars = entry.target.querySelectorAll('.skill-bar-fill');
+        bars.forEach(bar => {
+          bar.style.width = bar.dataset.width + '%';
+        });
+      }
+    });
+  }, { threshold: 0.1 });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // Also trigger skill bars in about section on load
+  const allBars = document.querySelectorAll('.skill-bar-fill');
+  setTimeout(() => {
+    allBars.forEach(bar => {
+      const parent = bar.closest('.reveal');
+      if (!parent) bar.style.width = bar.dataset.width + '%';
+    });
+  }, 800);
+</script>
+
+</body>
+</html>
