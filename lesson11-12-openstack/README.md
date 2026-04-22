@@ -62,7 +62,8 @@ Password: (from command above)
 - Ready to create VMs (vAMF, vSMF, vUPF)!
 
 ## Screenshots
-(See screenshots folder)
+### Horizon Dashboard — My Private Cloud
+![Horizon Dashboard](horizon-dashboard.png)
 
 ## Key Learnings
 1. KVM comes with Ubuntu kernel - NOT from Microstack!
@@ -72,3 +73,6 @@ Password: (from command above)
 5. My iMac setup is better than AWS VM for this lab!
 6. OpenStack is the VIM that manages hardware resources
 7. SDN + NFV + OpenStack together = 5G Cloud!
+
+## My Horizon Dashboard
+![Horizon Dashboard](horizon-dashboard.png)
